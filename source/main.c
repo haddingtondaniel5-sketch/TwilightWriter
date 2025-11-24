@@ -1,15 +1,15 @@
 # include "../includes/twilightwriter.h"
 
-void init_c(t_c *c, char *filename)
+void init_c(t_c *c)
 {
 
-	if (!filename)
+	if (!c->filename)
 	{
 		c->buffer = malloc(INIT_BUFFER_SIZE);
 		c->buffer[0] = 0;
 		c->buffer_length = INIT_BUFFER_SIZE;
 	} else {
-		c->buffer = open_file(c, filename);
+		c->buffer = open_file(c->filename);
 		c->buffer_length = strlen(c->buffer);
 	}
 
@@ -36,8 +36,8 @@ int main(int argc, char **argv)
 	if (argc)
 	{
 		t_c *c = malloc(sizeof(t_c));
-
-		init_c(c, argv[1]);
+		c->filename = strdup(argv[1]);
+		init_c(c);
 
 		// Initialise raw keyboard input and color formatting for ncurses
 		initscr();
@@ -65,6 +65,7 @@ int main(int argc, char **argv)
 
 			int key = getch();
 			if (key == CTRLX) { break; } // quit
+			else if (key == CTRLS) { save_file(c, c->filename); }
 			else if (key == KEY_UP) { handle_up_key(c); }
 			else if (key == KEY_DOWN) { handle_down_key(c); }
 			else if (key == KEY_RIGHT) { handle_right_key(c); }

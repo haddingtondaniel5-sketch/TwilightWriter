@@ -11,13 +11,14 @@
 
 # define INIT_BUFFER_SIZE 1024
 # define CTRLX 24
+# define CTRLS 19
 # define YOFFSET 2
 # define XOFFSET 2
 
 typedef struct s_c {
 	char *buffer;
 	unsigned long buffer_length;
-
+	char *filename;
 	unsigned int max_x;
 	unsigned int max_y;
 	unsigned int vis_x;
@@ -33,9 +34,10 @@ typedef struct s_c {
 
 
 
-void	init_c(t_c *c, char *filename);
+void	init_c(t_c *c);
 void	draw_pane(int max_y, int max_x);
-char	*open_file(t_c *c, char *filename);
+char	*open_file(char *filename);
+int 	save_file(t_c *c, const char *filename);
 void	draw_buffer(t_c *c);
 
 unsigned long check_line_length(t_c *c);
