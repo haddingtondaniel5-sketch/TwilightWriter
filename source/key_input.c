@@ -62,3 +62,8 @@ void handle_left_key(t_c *c)
 	if (c->vis_x > XOFFSET)
 		c->vis_x -= 1;	
 }
+
+void handle_character_key(t_c *c)
+{
+	return ;
+}

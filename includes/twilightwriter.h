@@ -6,6 +6,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <ctype.h>
 # include <ncurses.h>
 
 # define INIT_BUFFER_SIZE 1024
@@ -38,10 +39,10 @@ void	draw_buffer(t_c *c);
 
 unsigned long check_line_length(t_c *c);
 
-
 void handle_up_key(t_c *c);
 void handle_down_key(t_c *c);
 void handle_right_key(t_c *c);
 void handle_left_key(t_c *c);
+void handle_character_key(t_c *c);
 
 #endif
