@@ -15,7 +15,9 @@ void init_c(t_c *c, char *filename)
 
 	c->vis_x = XOFFSET;
 	c->vis_y = YOFFSET;
-	c->scroll_offset = 0;
+	c->scroll_yoffset = 0;
+	c->scroll_xoffset = 0;
+	c->current_line = 0;
 
 
 	long long i = 0;
@@ -51,10 +53,11 @@ int main(int argc, char **argv)
 	{
 		clear();
 		getmaxyx(stdscr, c->max_y, c->max_x);
-		draw_pane(c->max_y, c->max_x);
+
 		draw_buffer(c);
+		draw_pane(c->max_y, c->max_x);
 		attron(COLOR_PAIR(2));
-		mvprintw(c->vis_y, c->vis_x, "%d", c->scroll_offset);
+		mvprintw(c->vis_y, c->vis_x, "%d", c->current_line);
 		refresh();
 
 		int key = getch();
