@@ -18,6 +18,7 @@ void init_c(t_c *c, char *filename)
 	c->scroll_yoffset = 0;
 	c->scroll_xoffset = 0;
 	c->current_line = 0;
+	c->current_line_length = check_line_length(c);
 
 
 	long long i = 0;
@@ -57,7 +58,7 @@ int main(int argc, char **argv)
 		draw_buffer(c);
 		draw_pane(c->max_y, c->max_x);
 		attron(COLOR_PAIR(2));
-		mvprintw(c->vis_y, c->vis_x, "%d", c->current_line);
+		mvprintw(c->vis_y, c->vis_x, "%d", c->current_line_length);
 		refresh();
 
 		int key = getch();

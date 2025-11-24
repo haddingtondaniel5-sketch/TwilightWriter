@@ -26,11 +26,12 @@ void draw_buffer(t_c *c)
 	while (i < c->buffer_length)
 	{
 
-		mvaddch(vis_y - c->scroll_yoffset, vis_x, c->buffer[i]);
+		mvaddch(vis_y - c->scroll_yoffset, vis_x - c->scroll_xoffset, c->buffer[i]);
 		if (c->buffer[i] == '\n')
 		{
 			vis_x = XOFFSET;
 			vis_y += 1;
+			if (vis_y == c->max_y) break ;
 		}
 		else 
 			vis_x += 1;

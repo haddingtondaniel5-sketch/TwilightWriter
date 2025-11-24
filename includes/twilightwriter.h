@@ -17,14 +17,15 @@ typedef struct s_c {
 	char *buffer;
 	unsigned long buffer_length;
 
-	int max_x;
-	int max_y;
-	int vis_x;
-	int vis_y;
+	unsigned int max_x;
+	unsigned int max_y;
+	unsigned int vis_x;
+	unsigned int vis_y;
 	unsigned long line_count;
 	unsigned long scroll_yoffset;
 	unsigned long scroll_xoffset;
 	unsigned long current_line;
+	unsigned long current_line_length;
 
 } t_c;
 
@@ -34,6 +35,8 @@ void	init_c(t_c *c, char *filename);
 void	draw_pane(int max_y, int max_x);
 char	*open_file(t_c *c, char *filename);
 void	draw_buffer(t_c *c);
+
+unsigned long check_line_length(t_c *c);
 
 
 void handle_up_key(t_c *c);
