@@ -48,5 +48,6 @@ void handle_right_key(t_c *c);
 void handle_left_key(t_c *c);
 void handle_character_key(t_c *c, int key);
 void handle_return_key(t_c *c);
+void handle_tab_key(t_c *c);
 
 #endif

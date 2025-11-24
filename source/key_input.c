@@ -119,3 +119,9 @@ void handle_return_key(t_c *c)
 	c->line_count += 1;
 	handle_down_key(c);
 }
+
+void handle_backspace_key(t_c *c)
+{
+
+	return ;
+}
