@@ -58,7 +58,8 @@ int main(int argc, char **argv)
 		draw_buffer(c);
 		draw_pane(c->max_y, c->max_x);
 		attron(COLOR_PAIR(2));
-		mvprintw(c->vis_y, c->vis_x, "%d", c->current_line_length);
+		// mvprintw(c->vis_y, c->vis_x, "%d", c->current_line_length);
+		move(c->vis_y, c->vis_x);
 		refresh();
 
 		int key = getch();
