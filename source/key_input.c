@@ -63,7 +63,59 @@ void handle_left_key(t_c *c)
 		c->vis_x -= 1;	
 }
 
-void handle_character_key(t_c *c)
+void handle_character_key(t_c *c, int key)
 {
-	return ;
+	unsigned long position = c->vis_x - c->scroll_xoffset - XOFFSET;
+	unsigned long line = 0;
+	unsigned long i = 0;
+
+	c->buffer = realloc(c->buffer, c->buffer_length + 2);
+
+	while (c->buffer[i] && line != c->current_line)
+	{
+		if (c->buffer[i] == '\n')
+			line += 1;
+		i += 1;
+	}
+	position += i;
+	unsigned long buffer_length = c->buffer_length;
+	while (buffer_length > position)
+	{
+		c->buffer[buffer_length] = c->buffer[buffer_length - 1];
+		buffer_length -= 1;
+	}
+	c->buffer[position] = key;
+	c->buffer_length += 1;
+	c->buffer[c->buffer_length] = '\0';
+	handle_right_key(c);
+
+}
+
+void handle_return_key(t_c *c)
+{
+	unsigned long position = c->vis_x - c->scroll_xoffset - XOFFSET;
+	unsigned long line = 0;
+	unsigned long i = 0;
+
+	c->buffer = realloc(c->buffer, c->buffer_length + 2);
+
+	while (c->buffer[i] && line != c->current_line)
+	{
+		if (c->buffer[i] == '\n')
+			line += 1;
+		i += 1;
+	}
+	position += i;
+	unsigned long buffer_length = c->buffer_length;
+	while (buffer_length > position)
+	{
+		c->buffer[buffer_length] = c->buffer[buffer_length - 1];
+		buffer_length -= 1;
+	}
+	c->buffer[position] = '\n';
+	c->buffer_length += 1;
+	c->buffer[c->buffer_length] = '\0';
+
+	c->line_count += 1;
+	handle_down_key(c);
 }

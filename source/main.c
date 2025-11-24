@@ -55,11 +55,12 @@ int main(int argc, char **argv)
 		{
 			clear();
 			getmaxyx(stdscr, c->max_y, c->max_x);
-
+			c->current_line_length = check_line_length(c);
 			draw_buffer(c);
 			draw_pane(c->max_y, c->max_x);
 			attron(COLOR_PAIR(2));
-			move(c->vis_y, c->vis_x);
+			mvprintw(c->vis_y, c->vis_x, "%d", c->current_line_length);
+			// move(c->vis_y, c->vis_x);
 			refresh();
 
 			int key = getch();
@@ -68,7 +69,8 @@ int main(int argc, char **argv)
 			else if (key == KEY_DOWN) { handle_down_key(c); }
 			else if (key == KEY_RIGHT) { handle_right_key(c); }
 			else if (key == KEY_LEFT) { handle_left_key(c); }
-			else if (isprint(key) || key == '\t') { handle_character_key(c); }
+			else if (isprint(key)) { handle_character_key(c, key); }
+			else if (key == '\n') { handle_return_key(c); }
 		}
 		
 
