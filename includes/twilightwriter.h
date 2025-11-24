@@ -22,7 +22,9 @@ typedef struct s_c {
 	int vis_x;
 	int vis_y;
 	unsigned long line_count;
-	unsigned long scroll_offset;
+	unsigned long scroll_yoffset;
+	unsigned long scroll_xoffset;
+	unsigned long current_line;
 
 } t_c;
 
