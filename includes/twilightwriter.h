@@ -27,6 +27,7 @@ typedef struct s_c {
 	unsigned long scroll_xoffset;
 	unsigned long current_line;
 	unsigned long current_line_length;
+	unsigned long current_line_cursor;
 
 } t_c;
 
@@ -43,6 +44,7 @@ void handle_up_key(t_c *c);
 void handle_down_key(t_c *c);
 void handle_right_key(t_c *c);
 void handle_left_key(t_c *c);
-void handle_character_key(t_c *c);
+void handle_character_key(t_c *c, int key);
+void handle_return_key(t_c *c);
 
 #endif
