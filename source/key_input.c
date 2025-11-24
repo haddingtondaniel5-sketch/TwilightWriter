@@ -65,7 +65,7 @@ void handle_left_key(t_c *c)
 
 void handle_character_key(t_c *c, int key)
 {
-	unsigned long position = c->vis_x - c->scroll_xoffset - XOFFSET;
+	unsigned long position = c->vis_x + c->scroll_xoffset - XOFFSET;
 	unsigned long line = 0;
 	unsigned long i = 0;
 
@@ -93,7 +93,7 @@ void handle_character_key(t_c *c, int key)
 
 void handle_return_key(t_c *c)
 {
-	unsigned long position = c->vis_x - c->scroll_xoffset - XOFFSET;
+	unsigned long position = c->vis_x + c->scroll_xoffset - XOFFSET;
 	unsigned long line = 0;
 	unsigned long i = 0;
 
