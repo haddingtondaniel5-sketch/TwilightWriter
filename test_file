@@ -1,5 +1,14 @@
 Twilight Writer Document
+
 --------------------------------
+
+
+
+
+
+
+
+
 
 This is a test file for your text editor project.
 
@@ -18,7 +27,8 @@ This is a test file for your text editor project.
 
 It contains several lines of text.
 Some lines are short.
-Some lines are extremely, ridiculously, unbelievably, absurdly long and will help test how your buffer handles wrapping or overflow conditions safely and correctly.
+Some lines are extremely, ridiculously, unbelievably, absurdly long and will help test how your buffe
+r handles wrapping or overflow conditions safely and correctly.
 
 Tabs are here:        one	tab		two			three
 
