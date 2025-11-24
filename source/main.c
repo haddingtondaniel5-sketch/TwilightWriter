@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 			else if (isprint(key)) { handle_character_key(c, key); }
 			else if (key == '\n') { handle_return_key(c); }
 			// else if (key == '\t') { handle_tab_key(c); }
-			else if (key == '\b') { handle_backspace_key(c); }
+			// else if (key == '\b') { handle_backspace_key(c); }
 		}
 		
 		free(c->buffer);
