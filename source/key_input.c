@@ -65,9 +65,9 @@ void handle_left_key(t_c *c)
 
 void handle_character_key(t_c *c, int key)
 {
-	unsigned long position = c->vis_x + c->scroll_xoffset - XOFFSET;
-	unsigned long line = 0;
-	unsigned long i = 0;
+	size_t position = c->vis_x + c->scroll_xoffset - XOFFSET;
+	size_t line = 0;
+	size_t i = 0;
 
 	c->buffer = realloc(c->buffer, c->buffer_length + 2);
 
@@ -78,7 +78,7 @@ void handle_character_key(t_c *c, int key)
 		i += 1;
 	}
 	position += i;
-	unsigned long buffer_length = c->buffer_length;
+	size_t buffer_length = c->buffer_length;
 	while (buffer_length > position)
 	{
 		c->buffer[buffer_length] = c->buffer[buffer_length - 1];
@@ -93,9 +93,9 @@ void handle_character_key(t_c *c, int key)
 
 void handle_return_key(t_c *c)
 {
-	unsigned long position = c->vis_x + c->scroll_xoffset - XOFFSET;
-	unsigned long line = 0;
-	unsigned long i = 0;
+	size_t position = c->vis_x + c->scroll_xoffset - XOFFSET;
+	size_t line = 0;
+	size_t i = 0;
 
 	c->buffer = realloc(c->buffer, c->buffer_length + 2);
 
@@ -106,7 +106,7 @@ void handle_return_key(t_c *c)
 		i += 1;
 	}
 	position += i;
-	unsigned long buffer_length = c->buffer_length;
+	size_t buffer_length = c->buffer_length;
 	while (buffer_length > position)
 	{
 		c->buffer[buffer_length] = c->buffer[buffer_length - 1];
@@ -122,6 +122,29 @@ void handle_return_key(t_c *c)
 
 void handle_backspace_key(t_c *c)
 {
+	size_t position = c->vis_x + c->scroll_xoffset - XOFFSET - 1;
+	size_t line = 0;
+	size_t i = 0;
 
-	return ;
+
+	while (c->buffer[i] && line != c->current_line)
+	{
+		if (c->buffer[i] == '\n')
+			line += 1;
+		i += 1;
+	}
+
+	i += position;
+	c->buffer_length -= 1;
+	while (i < c->buffer_length)
+	{
+		c->buffer[i] = c->buffer[i + 1];
+		i += 1;
+	}
+	c->buffer = realloc(c->buffer, c->buffer_length + 1);
+	c->buffer[c->buffer_length] = '\0';
+	handle_left_key(c);
+	if (c->vis_x == XOFFSET)
+		handle_up_key(c);
+
 }
