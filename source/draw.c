@@ -2,8 +2,8 @@
 
 void draw_pane(int max_y, int max_x)
 {
-	unsigned short x = 1;
-	unsigned short y = 1;
+	size_t x = 1;
+	size_t y = 1;
 
 	attron(COLOR_PAIR(2));
 	mvprintw(0, 0, "C");
@@ -16,9 +16,9 @@ void draw_pane(int max_y, int max_x)
 
 void draw_buffer(t_c *c)
 {
-	unsigned long i = 0;
-	unsigned short vis_y = YOFFSET;
-	unsigned short vis_x = XOFFSET;
+	size_t i = 0;
+	size_t vis_y = YOFFSET;
+	size_t vis_x = XOFFSET;
 
 
 	attron(COLOR_PAIR(1));

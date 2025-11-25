@@ -1,10 +1,10 @@
 # include "../includes/twilightwriter.h"
 
-unsigned long check_line_length(t_c *c)
+size_t check_line_length(t_c *c)
 {
-	unsigned long line = 0;
-	unsigned long i = 0;
-	unsigned long length = 0;
+	size_t line = 0;
+	size_t i = 0;
+	size_t length = 0;
 
 	while (c->buffer[i] && line < c->current_line)
 	{
