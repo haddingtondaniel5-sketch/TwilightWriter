@@ -145,6 +145,9 @@ void handle_backspace_key(t_c *c)
 	c->buffer[c->buffer_length] = '\0';
 	handle_left_key(c);
 	if (c->vis_x == XOFFSET)
+	{
 		handle_up_key(c);
+	}
+		
 
 }
