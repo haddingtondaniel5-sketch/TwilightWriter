@@ -16,19 +16,19 @@
 # define XOFFSET 2
 
 typedef struct s_c {
-	char *buffer;
-	unsigned long buffer_length;
-	char *filename;
-	unsigned int max_x;
-	unsigned int max_y;
-	unsigned int vis_x;
-	unsigned int vis_y;
-	unsigned long line_count;
-	unsigned long scroll_yoffset;
-	unsigned long scroll_xoffset;
-	unsigned long current_line;
-	unsigned long current_line_length;
-	unsigned long current_line_cursor;
+	char	*buffer;
+	size_t	buffer_length;
+	char	*filename;
+	size_t	max_x;
+	size_t	max_y;
+	size_t	vis_x;
+	size_t	vis_y;
+	size_t	line_count;
+	size_t	scroll_yoffset;
+	size_t	scroll_xoffset;
+	size_t	current_line;
+	size_t	current_line_length;
+	size_t	current_line_cursor;
 
 } t_c;
 
@@ -40,7 +40,7 @@ char	*open_file(char *filename);
 int 	save_file(t_c *c, const char *filename);
 void	draw_buffer(t_c *c);
 
-unsigned long check_line_length(t_c *c);
+size_t	check_line_length(t_c *c);
 
 void handle_up_key(t_c *c);
 void handle_down_key(t_c *c);
@@ -49,5 +49,6 @@ void handle_left_key(t_c *c);
 void handle_character_key(t_c *c, int key);
 void handle_return_key(t_c *c);
 void handle_tab_key(t_c *c);
+void handle_backspace_key(t_c *c);
 
 #endif
