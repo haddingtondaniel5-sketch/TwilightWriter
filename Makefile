@@ -2,10 +2,7 @@
 TARGET := TwilightWriter
 
 # Compiler
-C_COMPILER := clang
-
-# Homebrew pkg-config path (Apple Silicon)
-export PKG_CONFIG_PATH := /opt/homebrew/lib/pkgconfig
+C_COMPILER := gcc
 
 # Compiler & Linker flags
 CFLAGS := 
